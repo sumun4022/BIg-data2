@@ -1,6 +1,5 @@
 import urllib.request
 import urllib.parse
-from ast import parse
 
 api = "https://www.kma.go.kr/weather/forecast/mid-term-rss3.jsp"
 
@@ -13,6 +12,8 @@ url = api + '?' + urllib.parse.urlencode(values)
 urls = urllib.request.urlopen(url).read()
 texts = urls.decode('utf-8')
 print(texts)
+
+
 
 """
 https://www.kma.go.kr/weather/forecast/mid-term-rss3.jsp?{'stnId': '184'}
