@@ -16,7 +16,8 @@ plt.axis([23500, 62500, 4, 9])
 plt.show()
 # Select a linear model
 # model = KNeighborsRegressor(n_neighbors=3) # K 최근접 모델 사용
-model = tglearn.LinearRegression()      # 커스텀 LinearRegression
+# model = tglearn.LinearRegression()      # 커스텀 LinearRegression
+model = tglearn.KNeighborsRegressor(n_neighbors=3)
 # Train the model
 model.fit(X, y)
 # Make a prediction for Cyprus
