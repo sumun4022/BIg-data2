@@ -4,7 +4,7 @@ from bs4 import BeautifulSoup
 
 shops = []
 
-for i in range(1, 5):
+for i in range(1, 50):
     url = f"https://www.hollys.co.kr/store/korea/korStore2.do?pageNo={i}&sido=&gugun=&store="
     # print(url)
     page = urllib.request.urlopen(url)
