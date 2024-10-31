@@ -25,5 +25,5 @@ for i in range(1, 51):
         shops.append([shops_name] + [shops_addr] + [shops_phone] + [datetime.datetime.now().strftime("%Y년 %m월 %d일 %H시 %M분 %S초")])
 
 # print(shops)
-hollys_df = pd.DataFrame(shops, columns = ('매장 이름', '주소', '전화 번호', '일시'));
+hollys_df = pd.DataFrame(shops, columns = ('매장 이름', '주소', '전화 번호', '일시'))
 hollys_df.to_csv('할리스 매장 목록.csv', mode='w', encoding='cp949')
