@@ -4,6 +4,8 @@ import pandas as pd
 from bs4 import BeautifulSoup
 import datetime
 
+# print(datetime.datetime.now().strftime("%Y년 %m월 %d일 %H시 %M분 %S초"))
+
 shops = []
 
 for i in range(1, 51):
@@ -20,7 +22,7 @@ for i in range(1, 51):
         shops_addr = tds[3].string
         shops_phone = tds[5].string
 
-        shops.append([shops_name] + [shops_addr] + [shops_phone] + [datetime.datetime.now()])
+        shops.append([shops_name] + [shops_addr] + [shops_phone] + [datetime.datetime.now().strftime("%Y년 %m월 %d일 %H시 %M분 %S초")])
 
 # print(shops)
 hollys_df = pd.DataFrame(shops, columns = ('매장 이름', '주소', '전화 번호', '일시'));
