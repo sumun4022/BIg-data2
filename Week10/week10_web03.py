@@ -4,7 +4,7 @@ from bs4 import BeautifulSoup
 
 shops = []
 
-for i in range(1, 50):
+for i in range(1, 51):
     url = f"https://www.hollys.co.kr/store/korea/korStore2.do?pageNo={i}&sido=&gugun=&store="
     # print(url)
     page = urllib.request.urlopen(url)
@@ -21,5 +21,5 @@ for i in range(1, 50):
         shops.append([shops_name] + [shops_addr] + [shops_phone])
 
 # print(shops)
-hollys_df = pd.DataFrame(shops, columns = ('매장 이름', '주소', '매장 번호'));
-hollys_df.to_csv('할리스 매장 목록.csv', mode='w')
+hollys_df = pd.DataFrame(shops, columns = ('매장 이름', '주소', '전화 번호'));
+hollys_df.to_csv('할리스 매장 목록.csv', mode='w', encoding='cp949')
