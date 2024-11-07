@@ -5,8 +5,18 @@ import matplotlib.pyplot as plt
 # 성별에 따른 생존율 계산
 titanic = sns.load_dataset('titanic')
 # print(titanic['sex'].head())
-gender_survived = titanic.groupby(by='sex')['survived'].mean()
+# gender_survived = titanic.groupby(by='sex')['survived'].mean()
+# print(type(gender_survived)) #<class 'pandas.core.series.Series'>
+
+gender_survived = titanic.groupby(by='sex')['survived'].mean().reset_index()
+print(type(gender_survived)) #<class 'pandas.core.series.Series'>
+sns.barplot(data=gender_survived, x='sex', y='survived')
+plt.title('Survival Rate by gender')
+plt.ylabel('survived Rate')
+plt.show()
 print(gender_survived)
+print(gender_survived.info())
+
 
 # titanic['deck'] = titanic['deck'].cat.add_categories('Unknown')
 # titanic['deck'].fillna('Unknown', inplace=True)
