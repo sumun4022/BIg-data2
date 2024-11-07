@@ -4,27 +4,30 @@ import pandas as pd
 import matplotlib.pyplot as plt
 
 titanic = sns.load_dataset('titanic')
-# age_survived = titanic.groupby(by='age')['survived'].mean()
-# # print(age_survived)
-# plt.hist(age_survived, color='green')
-# plt.title('Survival Rate by age')
-# plt.xlabel('age')
-# plt.ylabel('survived Rate')
-# plt.show()
-
-# 나이에 따른 생존율 계산
-# 1. 결측치 행 제거
-titanic_drop = titanic.dropna(subset=['age'])
-# print(titanic_drop.info())
-# 2. 생존율 계산
-titanic_drop['survived'] = titanic_drop['survived'].astype(float)
-# print(titanic_drop['survived'])
+median_age = titanic['age'].median()
+titanic_fill = titanic.fillna({'age': median_age})
+titanic_fill['survived'] = titanic_fill['survived'].astype(float)
+print(titanic_fill['survived'])
 plt.figure(figsize=(10,5))
-sns.histplot(data=titanic_drop, x='age', weights='survived', bins=30, kde=False)
-plt.title('survival Rate by age (Dropna)')
+sns.histplot(data=titanic_fill, x='age', weights='survived', bins=30, kde=False)
+plt.title('survival Rate by age (Fill with medium)')
 plt.xlabel('Age')
 plt.ylabel('survival Rate (weights)')
 plt.show()
+
+# 나이에 따른 생존율 계산
+# 1. 결측치 행 제거
+# titanic_drop = titanic.dropna(subset=['age'])
+# # print(titanic_drop.info())
+# # 2. 생존율 계산
+# titanic_drop['survived'] = titanic_drop['survived'].astype(float)
+# # print(titanic_drop['survived'])
+# plt.figure(figsize=(10,5))
+# sns.histplot(data=titanic_drop, x='age', weights='survived', bins=30, kde=False)
+# plt.title('survival Rate by age (Dropna)')
+# plt.xlabel('Age')
+# plt.ylabel('survival Rate (weights)')
+# plt.show()
 
 # 성별에 따른 생존율 계산
 # print(titanic['sex'].head())
