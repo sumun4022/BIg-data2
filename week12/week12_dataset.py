@@ -1,7 +1,8 @@
 import seaborn as sns
 import matplotlib.pyplot as plt
-from sklearn.linear_model import LinearRegression
+from sklearn.neighbors import KNeighborsRegressor
 from sklearn.model_selection import train_test_split
+
 
 titanic = sns.load_dataset('titanic')       #데이터 로딩
 median_age = titanic['age'].median()
@@ -13,7 +14,7 @@ y = titanic_fill[['survived']] #독립 변수
 X_trian, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
 
 # 모델 선택
-model = LinearRegression()
+model = KNeighborsRegressor(n_neighbors=5)
 
 # 모델 학습
 model.fit(X_trian, y_train)
