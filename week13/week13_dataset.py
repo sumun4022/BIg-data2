@@ -6,10 +6,10 @@ from sklearn.metrics import mean_squared_error, r2_score
 from sklearn.model_selection import train_test_split
 
 mpg = sns.load_dataset('mpg')
-print(mpg.info())
+# print(mpg.info())
 # mpg = mile per gallon
-mpg.dropna(inplace=True)        #결측치가 있는 열 제거
-
+# mpg.dropna(inplace=True)        #결측치가 있는 열 제거
+mpg['horsepower'] = mpg['horsepower'].fillna(mpg['horsepower'].median())            #결측치가 있는 열을 나머지값들의 중간값으로 채움
 mpg.drop(['name'], axis= 1, inplace=True)
 mpg = pd.get_dummies(mpg, columns=['origin'],drop_first=True)       #원 핫 인코딩
 # print(mpg.info())
