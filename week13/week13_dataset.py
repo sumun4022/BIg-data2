@@ -10,9 +10,9 @@ mpg = sns.load_dataset('mpg')
 # mpg = mile per gallon
 # mpg.dropna(inplace=True)        #결측치가 있는 열 제거
 mpg['horsepower'] = mpg['horsepower'].fillna(mpg['horsepower'].median())            #결측치가 있는 열을 나머지값들의 중간값으로 채움
-mpg.drop(['name'], axis= 1, inplace=True)
+mpg.drop(['name'], axis= 1, inplace=True)           #name 열 삭제
 mpg = pd.get_dummies(mpg, columns=['origin'],drop_first=True)       #원 핫 인코딩
-# print(mpg.info())
+print(mpg.info())
 
 # 독립 변수
 x = mpg.drop(['mpg'], axis= 1) #레이블 제거
@@ -45,3 +45,5 @@ plt.xlabel('actual MPG')
 plt.ylabel('predict MPG')
 plt.grid(True)
 plt.show()
+
+print(mpg)

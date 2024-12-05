@@ -35,7 +35,7 @@ plt.show()
 # print(type(gender_survived)) #<class 'pandas.core.series.Series'>
 
 # gender_survived = titanic.groupby(by='sex')['survived'].mean().reset_index()
-# print(type(gender_survived)) #<class 'pandas.core.series.Series'>
+# print(type(gender_survived)) #<class 'pandas.core.frame.DataFrame'>
 # sns.barplot(data=gender_survived, x='sex', y='survived')
 # plt.title('Survival Rate by gender')
 # plt.ylabel('survived Rate')
@@ -45,7 +45,7 @@ plt.show()
 
 
 # titanic['deck'] = titanic['deck'].cat.add_categories('Unknown')
-# titanic['deck'].fillna('Unknown', inplace=True)
+# titanic['deck'].fillna('Unknown', inplace=True)           #inplace = true 는 원본 데이터 프레임을 수정한다.
 # print(titanic['deck'])
 # print(titanic.info())
 
